@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <h3>Probability of Genetic Risk: <strong>{{ result.probability }}%</strong></h3>
+
+        <canvas id="riskChart" width="300" height="300"></canvas>
+
+        <script>
+            const ctx = document.getElementById('riskChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Risk %', 'Remaining %'],
+                    datasets: [{
+                        data: [{{ result.probability }}, {{ 100 - result.probability }}],
+                        backgroundColor: ['#ff4d4d', '#cce5ff'],
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        </script>
+
+        <h3>Insights:</h3>
+        <ul>
+            {% for insight in result.summary %}
+            <li>{{ insight }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Recommendation:</h3>
+        <p>{{ result.recommendation }}</p>
+    </div>
+</body>
+</html>
+

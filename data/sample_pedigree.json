@@ -1,0 +1,32 @@
+{
+    "child": {
+        "age": 5,
+        "sleep": 7,
+        "nutrition": 6,
+        "vaccination": "complete",
+        "symptoms": ["fatigue", "dizziness"]
+    },
+    "ancestors": [
+        {
+            "relation": "mother",
+            "disease": "diabetes",
+            "symptoms": ["fatigue", "frequent urination"],
+            "status": "lifelong",
+            "death_reason": ""
+        },
+        {
+            "relation": "father",
+            "disease": "hypertension",
+            "symptoms": ["headaches", "high blood pressure"],
+            "status": "lifelong",
+            "death_reason": "heart attack"
+        },
+        {
+            "relation": "grandfather",
+            "disease": "cancer",
+            "symptoms": ["weight loss", "fatigue"],
+            "status": "recovered",
+            "death_reason": "cancer"
+        }
+    ]
+}

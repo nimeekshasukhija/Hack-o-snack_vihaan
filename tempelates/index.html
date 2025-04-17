@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hereditech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>HEREDITECH</h1>
+        <h3>Genetic Disease Risk Predictor</h3>
+        <form method="POST" action="/result">
+            <fieldset>
+                <legend>Child Info</legend>
+                Age: <input type="number" name="age" required><br>
+                Sleep hours/day: <input type="number" name="sleep" required><br>
+                Nutrition score (1–10): <input type="number" name="nutrition" required><br>
+                Vaccination status: <input type="text" name="vaccination" required><br>
+                Symptoms (comma-separated): <input type="text" name="symptoms" required><br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Ancestor Info</legend>
+                {% for i in range(1, 4) %}
+                    <h4>Ancestor {{ i }}</h4>
+                    Relation: <input type="text" name="relation{{ i }}" required><br>
+                    Disease: <input type="text" name="disease{{ i }}" required><br>
+                    Symptoms: <input type="text" name="symptoms{{ i }}" required><br>
+                    Status (Lifelong/Recovered): <input type="text" name="status{{ i }}" required><br>
+                    Death Reason: <input type="text" name="death_reason{{ i }}"><br><br>
+                {% endfor %}
+            </fieldset>
+
+            <input type="submit" value="Predict Risk">
+        </form>
+    </div>
+</body>
+</html>
+
